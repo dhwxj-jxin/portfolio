@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DHWAJ JAIN — CREATIVE DIRECTION / FASHION / SOUND / IMAGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Archivo+Narrow:wght@400..700&family=Spline+Sans+Mono:wght@300..700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DHWAJ JAIN — ARCHIVE
+   Visual system: paper wall / cobalt registration / red thread
+   ============================================================ */
+
+:root{
+  --paper:#F5F2EA;
+  --paper-2:#EFEADD;
+  --kraft:#E4DCCA;
+  --ink:#111111;
+  --ink-60:rgba(17,17,17,.60);
+  --ink-35:rgba(17,17,17,.35);
+  --ink-14:rgba(17,17,17,.14);
+  --cobalt:#143BFF;
+  --cobalt-12:rgba(20,59,255,.12);
+  --cobalt-30:rgba(20,59,255,.30);
+  --thread:#C8321E;
+
+  --display:'Archivo',system-ui,sans-serif;
+  --meta:'Archivo Narrow','Archivo',system-ui,sans-serif;
+  --sys:'Spline Sans Mono',ui-monospace,monospace;
+  --hand:'Caveat',cursive;
+
+  --gut:clamp(14px,2.2vw,34px);
+  --rule:1px solid var(--ink-14);
+}
+:root:not([data-theme="light"]){ color-scheme:light; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#F5F2EA; --ink:#111111; /* archive stays paper. deliberate. */
+  }
+}
+:root[data-theme="dark"]{ --paper:#F5F2EA; --ink:#111111; }
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--meta); font-size:15px; line-height:1.45;
+  overflow-x:hidden;
+  text-rendering:optimizeLegibility;
+}
+
+/* ---------- paper substrate: grain + fold + registration grid ---------- */
+.substrate{position:fixed; inset:0; pointer-events:none; z-index:0;}
+.substrate .grain{position:absolute; inset:-50%; opacity:.5; mix-blend-mode:multiply;}
+.substrate .grid{
+  position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(to right, var(--cobalt-12) 0 1px, transparent 1px calc(100%/12)),
+    repeating-linear-gradient(to bottom, rgba(17,17,17,.045) 0 1px, transparent 1px 120px);
+  opacity:.55;
+}
+.substrate .stain{
+  position:absolute; width:52vw; height:52vw; right:-14vw; top:18vh; border-radius:50%;
+  background:radial-gradient(circle at 40% 40%, rgba(196,180,140,.20), transparent 62%);
+  mix-blend-mode:multiply;
+}
+.substrate .stain.b{left:-18vw; right:auto; top:auto; bottom:-10vh; width:44vw; height:44vw;
+  background:radial-gradient(circle at 60% 40%, rgba(20,59,255,.055), transparent 60%);}
+
+/* ---------- shell ---------- */
+.shell{position:relative; z-index:2; padding:0 var(--gut) 190px;}
+
+/* ---------- masthead ---------- */
+.masthead{
+  position:sticky; top:0; z-index:60;
+  display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+  padding:10px 0 7px; margin:0 0 8px;
+  border-bottom:1.5px solid var(--ink);
+  background:linear-gradient(to bottom, var(--paper) 74%, rgba(245,242,234,0));
+  backdrop-filter:blur(1px);
+}
+.mark{display:flex; align-items:baseline; gap:9px; cursor:pointer}
+.mark b{
+  font-family:var(--display); font-weight:800; font-stretch:78%;
+  font-size:clamp(17px,2.1vw,24px); letter-spacing:.005em; line-height:.9;
+}
+.mark i{font-family:var(--sys); font-style:normal; font-size:9px; color:var(--cobalt); letter-spacing:.14em; position:relative; top:-6px}
+nav.primary{display:flex; gap:clamp(10px,1.6vw,26px); align-items:baseline; flex-wrap:wrap; justify-content:flex-end}
+nav.primary a{
+  font-family:var(--meta); font-size:clamp(10px,1.05vw,12px); font-weight:600;
+  letter-spacing:.19em; text-transform:uppercase; color:var(--ink);
+  text-decoration:none; padding-bottom:2px; position:relative; white-space:nowrap;
+}
+nav.primary a::after{
+  content:""; position:absolute; left:0; right:100%; bottom:-1px; height:2px; background:var(--cobalt);
+  transition:right .28s cubic-bezier(.2,.7,.2,1);
+}
+nav.primary a:hover::after, nav.primary a[aria-current="page"]::after{right:0}
+nav.primary a[aria-current="page"]{color:var(--cobalt)}
+.masthead .sys{
+  font-family:var(--sys); font-size:9px; letter-spacing:.1em; color:var(--ink-35);
+  border-left:1px solid var(--ink-14); padding-left:12px; white-space:nowrap;
+}
+@media(max-width:820px){ .masthead .sys{display:none} }
+
+/* ---------- typographic primitives ---------- */
+.mega{
+  font-family:var(--display); font-weight:800; line-height:.78;
+  letter-spacing:-.025em; text-transform:uppercase; margin:0;
+}
+.wide{font-stretch:118%} .narrow{font-stretch:66%} .mid{font-stretch:88%}
+.outline{ -webkit-text-stroke:1.4px var(--ink); color:transparent; }
+.outline-cobalt{ -webkit-text-stroke:1.4px var(--cobalt); color:transparent; }
+.lab{
+  font-family:var(--sys); font-size:9.5px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-60);
+}
+.lab.blue{color:var(--cobalt)}
+.lab.red{color:var(--thread)}
+.hand{font-family:var(--hand); font-size:19px; color:var(--thread); line-height:1.05; transform:rotate(-2.4deg)}
+.serifless-body{font-family:var(--meta); font-size:14.5px; line-height:1.5; max-width:58ch; color:var(--ink-60)}
+
+/* section rule with technical stamp */
+.band{
+  display:flex; align-items:baseline; gap:14px; border-top:1.5px solid var(--ink);
+  padding-top:7px; margin:58px 0 0;
+}
+.band .n{font-family:var(--sys); font-size:10px; color:var(--cobalt); letter-spacing:.1em}
+.band .t{font-family:var(--meta); font-size:11px; font-weight:700; letter-spacing:.24em; text-transform:uppercase}
+.band .f{margin-left:auto; font-family:var(--sys); font-size:9px; color:var(--ink-35); letter-spacing:.1em}
+
+/* ---------- plates (photographic objects) ---------- */
+.plate{position:relative; display:block; background:var(--kraft); overflow:hidden;}
+.plate svg{display:block; width:100%; height:100%}
+.plate.soft{border-radius:11px}
+.plate.hard{border-radius:0}
+.plate::after{ /* print sheen */
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(118deg, rgba(255,255,255,.22), transparent 42%);
+  mix-blend-mode:screen;
+}
+.obj{ position:relative; transition:transform .5s cubic-bezier(.2,.75,.2,1), filter .5s ease; }
+.obj:hover{ transform:translateY(-4px) rotate(0deg) !important; z-index:40 }
+.obj .cap{
+  position:absolute; left:0; top:calc(100% + 6px); display:flex; gap:8px; align-items:baseline;
+  font-family:var(--sys); font-size:8.5px; letter-spacing:.12em; color:var(--ink-35); white-space:nowrap;
+}
+.obj .cap b{color:var(--ink); font-weight:500}
+.tape{
+  position:absolute; width:74px; height:21px; background:rgba(214,203,175,.72);
+  border-left:1px dashed rgba(17,17,17,.10); border-right:1px dashed rgba(17,17,17,.10);
+  top:-10px; left:16%; transform:rotate(-4deg); z-index:5; mix-blend-mode:multiply;
+}
+.tape.r{left:auto; right:12%; transform:rotate(3.2deg)}
+.pin{position:absolute; width:9px; height:9px; border-radius:50%; background:var(--thread); top:-4px; left:50%; z-index:6; box-shadow:0 1px 0 rgba(0,0,0,.25)}
+.stamp{
+  position:absolute; font-family:var(--sys); font-size:8px; letter-spacing:.16em; color:var(--cobalt);
+  border:1px solid var(--cobalt-30); padding:3px 6px; transform:rotate(-5deg); background:rgba(245,242,234,.7); z-index:7;
+}
+.punch{ /* archive hole punches */
+  position:absolute; left:-9px; top:0; bottom:0; width:18px; z-index:6;
+  background-image:radial-gradient(circle at 9px 26px, var(--paper) 4.5px, transparent 5px),
+                   radial-gradient(circle at 9px 50%, var(--paper) 4.5px, transparent 5px),
+                   radial-gradient(circle at 9px calc(100% - 26px), var(--paper) 4.5px, transparent 5px);
+}
+
+/* crop marks */
+.crop{position:absolute; width:11px; height:11px; border:0; z-index:8}
+.crop.tl{top:-5px;left:-5px;border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+.crop.tr{top:-5px;right:-5px;border-top:1px solid var(--ink);border-right:1px solid var(--ink)}
+.crop.bl{bottom:-5px;left:-5px;border-bottom:1px solid var(--ink);border-left:1px solid var(--ink)}
+.crop.br{bottom:-5px;right:-5px;border-bottom:1px solid var(--ink);border-right:1px solid var(--ink)}
+
+/* paper documents */
+.doc{
+  background:linear-gradient(174deg,#FBF8F0,#F0EBDD);
+  border:1px solid rgba(17,17,17,.13);
+  box-shadow:2px 3px 0 rgba(17,17,17,.055), 0 12px 24px -20px rgba(17,17,17,.5);
+  padding:13px 15px 15px;
+}
+.doc h4{font-family:var(--meta); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; margin:0 0 8px; font-weight:700}
+.doc p{margin:0 0 7px; font-size:13px; line-height:1.42; color:var(--ink-60)}
+.doc .ruled{background-image:repeating-linear-gradient(to bottom,transparent 0 21px, rgba(20,59,255,.10) 21px 22px)}
+
+/* id card */
+.idcard{
+  background:var(--cobalt); color:var(--paper); padding:11px 12px 12px; width:208px;
+  box-shadow:0 14px 28px -20px rgba(20,59,255,.9);
+}
+.idcard .row{display:flex; justify-content:space-between; font-family:var(--sys); font-size:8px; letter-spacing:.12em; opacity:.78}
+.idcard .nm{font-family:var(--display); font-weight:800; font-stretch:70%; font-size:27px; line-height:.86; margin:9px 0 3px; text-transform:uppercase}
+.idcard .rl{font-family:var(--meta); font-size:9.5px; letter-spacing:.2em; text-transform:uppercase; opacity:.85}
+.idcard .bar{height:15px; margin-top:10px; background:repeating-linear-gradient(90deg, var(--paper) 0 2px, transparent 2px 4px, var(--paper) 4px 5px, transparent 5px 9px)}
+
+/* folder tab */
+.folder{ position:relative; background:var(--kraft); border:1px solid rgba(17,17,17,.16); padding:16px 16px 14px }
+.folder::before{
+  content:attr(data-tab); position:absolute; top:-19px; left:18px; padding:3px 13px;
+  background:var(--kraft); border:1px solid rgba(17,17,17,.16); border-bottom:0;
+  font-family:var(--sys); font-size:8.5px; letter-spacing:.16em; color:var(--ink-60);
+  border-radius:3px 3px 0 0;
+}
+
+/* thread overlay */
+.threads{position:absolute; inset:0; pointer-events:none; z-index:30; overflow:visible}
+.threads path{fill:none; stroke:var(--thread); stroke-width:1; stroke-dasharray:1200; stroke-dashoffset:1200; animation:draw 1.9s cubic-bezier(.3,.7,.2,1) forwards}
+.threads path.blue{stroke:var(--cobalt); stroke-width:.85; stroke-dasharray:4 3.5}
+.threads circle{fill:var(--thread)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){ .threads path{animation:none; stroke-dashoffset:0} }
+
+/* ============================================================
+   HOME — the wall
+   ============================================================ */
+.wall{position:relative; min-height:calc(100vh - 60px); padding-top:clamp(10px,3vh,30px)}
+
+.titleblock{position:relative; z-index:20; pointer-events:none; mix-blend-mode:multiply}
+.titleblock .l1{font-size:clamp(78px,17.5vw,268px)}
+.titleblock .l2{font-size:clamp(78px,17.5vw,268px); margin-left:clamp(30px,13vw,240px)}
+.titleblock .l2 em{font-style:normal}
+.titleblock .sub{
+  display:flex; gap:10px; flex-wrap:wrap; align-items:baseline; margin-top:14px;
+  margin-left:clamp(30px,13vw,240px); pointer-events:auto;
+}
+.titleblock .sub .k{font-family:var(--meta); font-size:clamp(10px,1.05vw,12.5px); letter-spacing:.3em; text-transform:uppercase; font-weight:600}
+.titleblock .sub .slash{color:var(--cobalt)}
+
+.marqueestrip{
+  position:relative; z-index:18; margin:0 calc(-1 * var(--gut)); border-top:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink);
+  background:var(--cobalt); color:var(--paper); overflow:hidden; height:29px; display:flex; align-items:center;
+}
+.marqueestrip .tick{display:flex; gap:44px; padding-left:44px; white-space:nowrap; animation:slide 34s linear infinite; font-family:var(--sys); font-size:10px; letter-spacing:.2em}
+.marqueestrip .tick span::before{content:"◆ "; opacity:.55}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){ .marqueestrip .tick{animation:none} }
+
+.scatter{position:relative; height:0}
+.scatter .obj{position:absolute}
+
+/* index counter */
+.counter{
+  position:absolute; right:0; top:2px; text-align:right; z-index:22;
+}
+.counter .big{font-family:var(--display); font-weight:800; font-stretch:62%; font-size:clamp(40px,7vw,96px); line-height:.8; color:var(--cobalt)}
+.counter .inf{font-family:var(--display); font-weight:300; font-size:clamp(28px,4vw,54px); line-height:.8}
+
+/* ============================================================
+   INDEX
+   ============================================================ */
+.filters{display:flex; flex-wrap:wrap; gap:0; margin:22px 0 10px; border-top:1px solid var(--ink-14); border-bottom:1px solid var(--ink-14)}
+.filters button{
+  appearance:none;
+  background:transparent;
+  border:0;
+  border-right:1px solid var(--ink-14);
+  padding:11px 17px;
+  cursor:pointer;
+  font-family:var(--sys);
+  font-weight:500;
+  font-size:9px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-60);
+  transition:
+    background .2s ease,
+    color .2s ease;
+}
+.filters button:hover{color:var(--ink); background:rgba(20,59,255,.05)}
+.filters button[aria-pressed="true"]{background:var(--cobalt); color:var(--paper)}
+.filters button:focus-visible, nav.primary a:focus-visible, .mark:focus-visible, .ctrl:focus-visible, .idxrow:focus-visible{outline:2px solid var(--thread); outline-offset:3px}
+
+.idxwrap{position:relative; margin-top:26px}
+.idxrow{
+  display:grid; grid-template-columns:70px minmax(0,1fr) 180px 160px;
+  align-items:center; gap:20px; padding:22px 0; border-bottom:1px solid var(--ink-14);
+  cursor:pointer; background:transparent; border-left:0; border-right:0; border-top:0; width:100%; text-align:left;
+  transition:padding-left .3s ease, background .3s ease;
+}
+.idxrow:hover{padding-left:24px; background:linear-gradient(90deg, rgba(20,59,255,.08), transparent 70%)}
+.idxrow .num{
+  font-family:var(--sys);
+  font-size:9px;
+  color:var(--cobalt);
+  letter-spacing:.14em;
+  align-self:start;
+  padding-top:7px;
+}
+.idxrow .ttl{
+  font-family:var(--display);
+  font-weight:800;
+  font-stretch:78%;
+  text-transform:uppercase;
+  font-size:clamp(30px,5.2vw,76px);
+  line-height:.82;
+  letter-spacing:-.025em;
+}
+.idxrow .project-info{
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+  min-width:0;
+}
+
+.idxrow .roles{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px 7px;
+  opacity:.7;
+}
+
+.idxrow .roles span{
+  font-family:var(--sys);
+  font-size:8px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-60);
+  border:1px solid var(--ink-14);
+  padding:3px 6px;
+  white-space:nowrap;
+}
+.idxrow:hover .ttl{font-stretch:110%; transition:font-stretch .45s cubic-bezier(.2,.8,.2,1)}
+.idxrow .cat{
+  font-family:var(--sys);
+  font-size:8px;
+  letter-spacing:.16em;
+  color:var(--cobalt);
+  text-transform:uppercase;
+  align-self:end;
+  padding-bottom:5px;
+  white-space:nowrap;
+}
+.idxrow:hover .roles{
+  opacity:1;
+}
+
+.idxrow:hover .roles span{
+  border-color:var(--cobalt-30);
+  color:var(--ink);
+}
+.idxrow .thumb{
+  height:92px;
+  width:150px;
+  opacity:0;
+  transform:translateX(-20px) rotate(2deg);
+  transition:
+    opacity .35s ease,
+    transform .45s cubic-bezier(.2,.8,.2,1);
+  justify-self:end;
+}
+.idxrow:hover .thumb{
+  opacity:1;
+  transform:translateX(0) rotate(-2deg);
+}
+@media(max-width:760px){
+  .idxrow{grid-template-columns:44px 1fr 62px; }
+  .idxrow .cat,.idxrow .thumb{display:none}
+}
+.idxstack{position:relative; margin-top:34px}
+
+/* ============================================================
+   PROJECT / CASE FILE
+   ============================================================ */
+.casehead{display:grid; grid-template-columns:1fr auto; gap:14px; align-items:end; border-bottom:1.5px solid var(--ink); padding-bottom:10px}
+.casehead h1{font-size:clamp(46px,11vw,168px)}
+.casemeta{display:flex; gap:26px; flex-wrap:wrap; padding:9px 0 0}
+.casemeta div{min-width:86px}
+.casemeta dt{font-family:var(--sys); font-size:8.5px; letter-spacing:.16em; color:var(--ink-35); text-transform:uppercase}
+.casemeta dd{margin:2px 0 0; font-family:var(--meta); font-size:13px; font-weight:600; letter-spacing:.05em; text-transform:uppercase}
+
+.compose{position:relative; margin-top:30px}
+.col-span{display:grid; grid-template-columns:repeat(12,1fr); gap:var(--gut); align-items:start}
+.c1{grid-column:1/4} .c2{grid-column:4/8} .c3{grid-column:8/13}
+.c-a{grid-column:2/7} .c-b{grid-column:7/12} .c-full{grid-column:1/13}
+.c-l4{grid-column:1/5} .c-r5{grid-column:8/13} .c-m6{grid-column:3/10}
+@media(max-width:900px){
+  .col-span{grid-template-columns:repeat(6,1fr)}
+  .c1,.c2,.c3,.c-a,.c-b,.c-full,.c-l4,.c-r5,.c-m6{grid-column:1/7}
+}
+.chapter{font-family:var(--display); font-weight:800; font-stretch:64%; text-transform:uppercase; font-size:clamp(28px,5.4vw,74px); line-height:.85; letter-spacing:-.02em; margin:0 0 9px}
+.chapter .i{font-family:var(--sys); font-size:11px; color:var(--cobalt); vertical-align:super; margin-right:8px; letter-spacing:.06em}
+
+/* ============================================================
+   WORLDS / ARCHIVE — research wall
+   ============================================================ */
+.researchwall{position:relative; margin-top:26px; columns:4; column-gap:var(--gut)}
+@media(max-width:1100px){.researchwall{columns:3}}
+@media(max-width:760px){.researchwall{columns:2}}
+@media(max-width:440px){.researchwall{columns:2; column-gap:12px}}
+.researchwall > *{break-inside:avoid; margin:0 0 var(--gut); display:block}
+.swatchrow{display:flex; height:54px; border:1px solid rgba(17,17,17,.14)}
+.swatchrow i{flex:1}
+.noteslip{background:#FBF8F0; border:1px solid rgba(17,17,17,.12); padding:12px 13px; transform:rotate(-.9deg)}
+.noteslip .hand{font-size:20px}
+
+.catnav{display:flex; flex-wrap:wrap; gap:6px 22px; margin:16px 0 0; padding-bottom:12px; border-bottom:1px solid var(--ink-14)}
+.catnav span{font-family:var(--meta); font-size:11px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-35)}
+.catnav span:first-child{color:var(--cobalt)}
+
+/* ============================================================
+   SOUND
+   ============================================================ */
+.cue{
+  display:grid; grid-template-columns:52px 1fr 190px; gap:var(--gut); align-items:center;
+  border-bottom:1px solid var(--ink-14); padding:17px 0; cursor:pointer; background:none; border-left:0;border-right:0;border-top:0; width:100%; text-align:left;
+}
+.cue:hover{background:linear-gradient(90deg, rgba(20,59,255,.06), transparent)}
+.cue[aria-current="true"] .cn{background:var(--cobalt); color:var(--paper)}
+.cue .cn{font-family:var(--sys); font-size:10px; letter-spacing:.08em; border:1px solid var(--cobalt-30); color:var(--cobalt); padding:5px 0; text-align:center}
+.cue .name{font-family:var(--display); font-weight:800; font-stretch:80%; text-transform:uppercase; font-size:clamp(19px,3vw,38px); line-height:.94; letter-spacing:-.012em}
+.cue .mood{display:flex; gap:9px; flex-wrap:wrap; margin-top:6px}
+.cue .mood i{font-family:var(--sys); font-style:normal; font-size:8.5px; letter-spacing:.16em; color:var(--ink-35); border:1px solid var(--ink-14); padding:2px 6px}
+.cue .wave{height:38px; display:flex; align-items:flex-end; gap:2px}
+.cue .wave i{flex:1; background:var(--ink-14); display:block}
+.cue:hover .wave i{background:var(--cobalt-30)}
+.cue .dur{font-family:var(--sys); font-size:9.5px; color:var(--ink-35); letter-spacing:.1em; margin-top:5px; display:block}
+@media(max-width:760px){ .cue{grid-template-columns:40px 1fr} .cue .wave,.cue .dur{display:none} }
+
+/* transport — show control interface */
+.transport{
+  position:fixed; left:0; right:0; bottom:0; z-index:80;
+  background:var(--ink); color:var(--paper);
+  display:grid; grid-template-columns:auto 1fr auto; gap:clamp(10px,2vw,26px); align-items:center;
+  padding:9px var(--gut); border-top:2px solid var(--cobalt);
+}
+.transport .ctrl{
+  appearance:none; background:transparent; border:1px solid rgba(245,242,234,.3); color:var(--paper);
+  width:32px; height:28px; cursor:pointer; font-family:var(--sys); font-size:10px; display:grid; place-items:center;
+}
+.transport .ctrl:hover{background:var(--cobalt); border-color:var(--cobalt)}
+.transport .ctrls{display:flex; gap:5px; align-items:center}
+.transport .nowname{font-family:var(--meta); font-size:11px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.transport .sub{font-family:var(--sys); font-size:8.5px; letter-spacing:.14em; color:rgba(245,242,234,.5); margin-top:2px}
+.transport .track{position:relative; height:3px; background:rgba(245,242,234,.18); margin-top:7px}
+.transport .track i{position:absolute; left:0; top:0; bottom:0; background:var(--cobalt); width:0%}
+.transport .tc{font-family:var(--sys); font-size:10px; letter-spacing:.08em; color:var(--cobalt); white-space:nowrap}
+.transport .state{font-family:var(--sys); font-size:8px; letter-spacing:.14em; color:rgba(245,242,234,.45); text-align:right}
+@media(max-width:620px){ .transport{grid-template-columns:auto 1fr; padding:8px 12px} .transport .rightcol{display:none} }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.practice{display:grid; grid-template-columns:repeat(auto-fill,minmax(168px,1fr)); gap:0; border-top:1px solid var(--ink-14)}
+.practice div{border-bottom:1px solid var(--ink-14); border-right:1px solid var(--ink-14); padding:14px 12px}
+.practice b{font-family:var(--display); font-weight:800; font-stretch:78%; font-size:17px; text-transform:uppercase; display:block; letter-spacing:-.01em}
+.practice i{font-family:var(--sys); font-style:normal; font-size:8.5px; letter-spacing:.14em; color:var(--cobalt)}
+
+/* view transitions */
+.view{display:none}
+.view.on{display:block; animation:vin .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes vin{from{opacity:0; transform:translateY(7px)}to{opacity:1; transform:none}}
+@media(prefers-reduced-motion:reduce){.view.on{animation:none}}
+
+/* colophon */
+.colophon{display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; margin-top:70px; padding-top:9px; border-top:1.5px solid var(--ink)}
+.colophon p{margin:0; font-family:var(--sys); font-size:9px; letter-spacing:.13em; color:var(--ink-35)}
+.colophon a{color:var(--cobalt); text-decoration:none}
+
+/* generic utility */
+.stack-gap{display:flex; flex-direction:column; gap:var(--gut)}
+.rot-l{transform:rotate(-1.6deg)} .rot-r{transform:rotate(1.4deg)} .rot-l2{transform:rotate(-3.1deg)} .rot-r2{transform:rotate(2.6deg)}
+.overflow-guard{overflow-x:clip}
+.index-intro{
+  display:grid;
+  grid-template-columns:180px minmax(0,420px);
+  gap:var(--gut);
+  margin-top:18px;
+  padding-bottom:10px;
+}
+
+.index-intro p{
+  margin:0;
+}
+
+@media(max-width:760px){
+  .index-intro{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="substrate" aria-hidden="true">
+  <div class="grid"></div>
+  <div class="stain"></div>
+  <div class="stain b"></div>
+  <svg class="grain" xmlns="http://www.w3.org/2000/svg">
+    <filter id="gn"><feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.24"/></feComponentTransfer></filter>
+    <rect width="100%" height="100%" filter="url(#gn)"/>
+  </svg>
+</div>
+
+<div class="shell overflow-guard">
+
+  <header class="masthead">
+    <div class="mark" role="button" tabindex="0" data-go="home">
+      <b>DHWAJ</b><i>ARCH.</i>
+    </div>
+    <nav class="primary" aria-label="Sections">
+      <a href="#index" data-go="index">Index</a>
+      <a href="#worlds" data-go="worlds">Worlds</a>
+      <a href="#design" data-go="design">Design</a>
+      <a href="#sound" data-go="sound">Sound</a>
+      <a href="#archive" data-go="archive">Archive</a>
+      <a href="#about" data-go="about">About</a>
+    </nav>
+    <div class="sys" id="sysline">LAT 18.52 / LON 73.85 · SHEET 001</div>
+  </header>
+
+  <!-- ================= HOME ================= -->
+  <section class="view on" id="v-home" aria-label="Home">
+    <div class="wall">
+
+      <div class="counter">
+        <div class="lab blue">INDEX</div>
+        <div class="big" id="ctr">001</div>
+        <div class="inf">→ ∞</div>
+      </div>
+
+      <div class="titleblock">
+        <h1 class="mega wide l1">DHWAJ</h1>
+        <h1 class="mega wide l2 outline-cobalt"><em>JAIN</em></h1>
+        <div class="sub">
+          <span class="k">Creative Direction</span><span class="slash">/</span>
+          <span class="k">Fashion</span><span class="slash">/</span>
+          <span class="k">Sound</span><span class="slash">/</span>
+          <span class="k">Image</span>
+        </div>
+      </div>
+
+      <div class="scatter" id="homeScatter" style="height:clamp(560px,78vh,900px)"></div>
+
+      <svg class="threads" id="homeThreads" preserveAspectRatio="none" aria-hidden="true"></svg>
+    </div>
+
+    <div class="marqueestrip" aria-hidden="true">
+      <div class="tick" id="tick"></div>
+    </div>
+
+    <div class="band"><span class="n">01</span><span class="t">Currently On The Wall</span><span class="f">SHEET 001 / 006 · PINNED</span></div>
+    <div class="col-span" style="margin-top:16px">
+      <div class="c-l4">
+        <p class="serifless-body">A working archive of fashion direction, image, and sound. Everything here sits between research and result: boards, offcuts, cue sheets, unfinished worlds. Projects are filed by number, not by importance.</p>
+        <div class="hand" style="margin-top:14px">nothing here is finished yet</div>
+      </div>
+      <div class="c-r5">
+        <div class="folder rot-r" data-tab="F/001 — WORKING NOTES">
+          <div class="lab" style="margin-bottom:8px">PRACTICE</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 14px">
+            <span class="lab" style="color:var(--ink)">Creative Direction</span>
+            <span class="lab" style="color:var(--ink)">Fashion Design</span>
+            <span class="lab" style="color:var(--ink)">Styling</span>
+            <span class="lab" style="color:var(--ink)">Show Direction</span>
+            <span class="lab" style="color:var(--ink)">Visual Development</span>
+            <span class="lab" style="color:var(--ink)">Sound Direction</span>
+            <span class="lab" style="color:var(--ink)">Event Design</span>
+            <span class="lab" style="color:var(--ink)">Worldbuilding</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INDEX ================= -->
+  <section class="view" id="v-index" aria-label="The Index">
+    <div style="position:relative">
+      <h1 class="mega narrow" style="font-size:clamp(60px,15vw,214px);margin-top:14px">
+        THE&nbsp;INDEX
+      </h1>
+    
+      <div class="stamp" style="position:absolute;right:2%;top:24%;transform:rotate(-7deg)">
+        ARCHIVE / OPEN
+      </div>
+    
+      <div class="index-intro">
+        <span class="lab blue">F/001 — SELECTED PRACTICE</span>
+        <p class="serifless-body">
+          Fashion, performance, culture and experience —
+          projects developed through concept, direction and execution.
+        </p>
+      </div>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+    <div class="idxwrap" id="idxList"></div>
+    <div class="idxstack" id="idxStack" style="height:clamp(360px,46vh,520px);position:relative"></div>
+  </section>
+
+  <!-- ================= PROJECT ================= -->
+  <section class="view" id="v-project" aria-label="Project case file"></section>
+
+  <!-- ================= WORLDS ================= -->
+  <section class="view" id="v-worlds" aria-label="Worldbuilding">
+    <h1 class="mega mid" style="font-size:clamp(50px,12.4vw,186px);margin-top:14px">WORLD<br><span class="outline">BUILDING</span></h1>
+    <div class="catnav"><span>Mood</span><span>Research</span><span>Material</span><span>Space</span><span>Image</span><span>Movement</span><span>Reference</span></div>
+    <p class="serifless-body" style="margin-top:16px">Everything collected before a garment exists. Pulled from architecture, film stills, texture, noise, and things photographed without a reason.</p>
+    <div class="researchwall" id="worldsWall"></div>
+  </section>
+
+  <!-- ================= DESIGN ================= -->
+  <section class="view" id="v-design" aria-label="Design">
+    <h1 class="mega wide" style="font-size:clamp(60px,15vw,220px);margin-top:14px">DESIGN</h1>
+    <div class="catnav"><span>Garments</span><span>Objects</span><span>Accessories</span><span>Development</span><span>Technical</span><span>Experiments</span></div>
+    <div id="designBody" style="margin-top:28px"></div>
+  </section>
+
+  <!-- ================= SOUND ================= -->
+  <section class="view" id="v-sound" aria-label="Sound">
+    <div class="col-span" style="margin-top:14px">
+      <div class="c-l4"><h1 class="mega narrow" style="font-size:clamp(66px,14vw,200px)">SOUND</h1></div>
+      <div class="c-r5" style="align-self:end;padding-bottom:12px">
+        <div class="lab blue">MUSIC FOR</div>
+        <p class="serifless-body" style="margin-top:6px">Fashion / walks / shows / events. Sound is written with the garment, not laid over it afterwards.</p>
+      </div>
+    </div>
+    <div class="catnav"><span>Show Scores</span><span>Walk Music</span><span>Event Sound</span><span>Playlists</span><span>Sound Experiments</span></div>
+    <div id="cueList" style="margin-top:20px"></div>
+    <div class="col-span" style="margin-top:34px">
+      <div class="c-l4"><div class="doc rot-l"><h4>Cue sheet notes</h4><p>Audio files are not loaded in this build. Each cue below is a live slot: drop an MP3 into <code>/public/audio/</code> and map it to the cue ID.</p></div></div>
+      <div class="c-r5" id="soundPlates"></div>
+    </div>
+  </section>
+
+  <!-- ================= ARCHIVE ================= -->
+  <section class="view" id="v-archive" aria-label="Archive">
+    <div style="position:relative">
+      <h1 class="mega wide" style="font-size:clamp(56px,14vw,206px);margin-top:14px">ARCHIVE</h1>
+      <div class="hand" style="position:absolute;right:4%;top:6%;font-size:24px">unsorted — do not clean</div>
+    </div>
+    <div class="catnav"><span>Backstage</span><span>Sketches</span><span>Rejected</span><span>Process</span><span>Screenshots</span><span>Notes</span><span>Fabric</span><span>References</span></div>
+    <div class="researchwall" id="archiveWall"></div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="view" id="v-about" aria-label="About">
+    <div class="col-span" style="margin-top:14px">
+      <div class="c-l4" style="position:relative">
+        <h1 class="mega narrow" style="font-size:clamp(54px,9vw,132px)">DHWAJ<br>JAIN</h1>
+        <div class="lab blue" style="margin-top:10px">CREATIVE DIRECTOR</div>
+        <p class="serifless-body" style="margin-top:16px">I work across fashion, image, and sound, and I treat them as one piece of material. A collection usually starts as a world first: a place, a temperature, a way of walking, a noise in the room. The garments arrive after that.</p>
+        <p class="serifless-body" style="margin-top:10px">Based in Pune. Currently building the archive out in public.</p>
+        <div class="hand" style="margin-top:18px">the clothes are the last thing i make</div>
+      </div>
+      <div class="c-r5" id="aboutPlates"></div>
+    </div>
+    <div class="band"><span class="n">A/01</span><span class="t">Creative Practice</span><span class="f">EIGHT DISCIPLINES</span></div>
+    <div class="practice" id="practiceGrid"></div>
+    <div class="band"><span class="n">A/02</span><span class="t">Selected Work</span><span class="f">PLACEHOLDER — AWAITING REAL CREDITS</span></div>
+    <div class="col-span" style="margin-top:16px">
+      <div class="c-l4"><div class="doc"><h4>Note</h4><p>Credits, roles, and production details have not been supplied for this build. This block is a placeholder structure, ready to be filled with real work.</p></div></div>
+      <div class="c-r5"><div class="doc ruled" style="min-height:190px"><h4>Selected work</h4><p style="opacity:.45">[ to be filled ]</p></div></div>
+    </div>
+  </section>
+
+  <div class="colophon">
+    <p>DHWAJ JAIN — ARCHIVE / BUILD 001 / PUNE IN</p>
+    <p>SET IN ARCHIVO &amp; SPLINE SANS MONO</p>
+    <p id="clock">--:--:--</p>
+  </div>
+</div>
+
+<!-- ================= TRANSPORT ================= -->
+<div class="transport" role="region" aria-label="Sound transport">
+  <div class="ctrls">
+    <button class="ctrl" id="tPrev" aria-label="Previous cue">|◀</button>
+    <button class="ctrl" id="tPlay" aria-label="Play or pause">▶</button>
+    <button class="ctrl" id="tNext" aria-label="Next cue">▶|</button>
+  </div>
+  <div>
+    <div class="nowname" id="tName">MERCURY / NIGHT 01</div>
+    <div class="sub" id="tSub">CUE 01 · WALK MUSIC · COLD / METALLIC / NOCTURNAL</div>
+    <div class="track"><i id="tBar"></i></div>
+  </div>
+  <div class="rightcol" style="text-align:right">
+    <div class="tc" id="tTime">00:00 / 03:40</div>
+    <div class="state" id="tState">NO AUDIO FILE LOADED — TRANSPORT PREVIEW</div>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ---------------------------------------------------------
+   PLATE GENERATOR
+   Abstract editorial placeholder imagery, duotone on paper.
+   Replace by swapping <img src="/public/images/..."> in.
+   --------------------------------------------------------- */
+var PAPER="#EFEADD", INK="#111111", COBALT="#143BFF", KRAFT="#DCD3BE";
+function rnd(s){var x=Math.sin(s)*10000; return x-Math.floor(x);}
+
+function plate(kind, seed, w, h){
+  w=w||600; h=h||800;
+  var id="p"+seed+"_"+Math.floor(rnd(seed)*99999);
+  var body="";
+  var tint = (seed%4===0)?COBALT:INK;
+  if(kind==="figure"){
+    body+='<rect width="'+w+'" height="'+h+'" fill="'+KRAFT+'"/>';
+    body+='<ellipse cx="'+(w*0.5)+'" cy="'+(h*0.30)+'" rx="'+(w*0.17)+'" ry="'+(h*0.15)+'" fill="'+tint+'" opacity=".88"/>';
+    body+='<path d="M'+(w*0.30)+' '+h+' C '+(w*0.30)+' '+(h*0.52)+', '+(w*0.40)+' '+(h*0.42)+', '+(w*0.50)+' '+(h*0.42)+
+          ' C '+(w*0.62)+' '+(h*0.42)+', '+(w*0.72)+' '+(h*0.54)+', '+(w*0.72)+' '+h+' Z" fill="'+tint+'" opacity=".9"/>';
+    body+='<path d="M'+(w*0.36)+' '+(h*0.60)+' L '+(w*0.66)+' '+(h*0.60)+'" stroke="'+PAPER+'" stroke-width="'+(h*0.012)+'" opacity=".5"/>';
+  } else if(kind==="drape"){
+    body+='<rect width="'+w+'" height="'+h+'" fill="'+PAPER+'"/>';
+    for(var i=0;i<11;i++){
+      var x=w*(i/10), amp=w*0.05*(0.4+rnd(seed+i));
+      body+='<path d="M'+x+' 0 C '+(x+amp)+' '+(h*0.3)+', '+(x-amp)+' '+(h*0.66)+', '+x+' '+h+'" stroke="'+tint+'" stroke-width="'+(w*0.028)+'" fill="none" opacity="'+(0.16+rnd(seed+i*3)*0.55).toFixed(2)+'"/>';
+    }
+  } else if(kind==="arch"){
+    body+='<rect width="'+w+'" height="'+h+'" fill="'+KRAFT+'"/>';
+    body+='<rect x="0" y="'+(h*0.52)+'" width="'+w+'" height="'+(h*0.48)+'" fill="'+tint+'" opacity=".82"/>';
+    for(var j=0;j<6;j++){
+      body+='<rect x="'+(w*(0.06+j*0.155))+'" y="'+(h*(0.16+rnd(seed+j)*0.2))+'" width="'+(w*0.1)+'" height="'+(h*0.42)+'" fill="'+tint+'" opacity="'+(0.25+j*0.11).toFixed(2)+'"/>';
+    }
+    body+='<circle cx="'+(w*0.78)+'" cy="'+(h*0.18)+'" r="'+(w*0.09)+'" fill="'+PAPER+'" opacity=".85"/>';
+  } else if(kind==="weave"){
+    body+='<rect width="'+w+'" height="'+h+'" fill="'+PAPER+'"/>';
+    var st=w/18;
+    for(var a=0;a<24;a++){
+      body+='<rect x="'+(a*st)+'" y="0" width="'+(st*0.52)+'" height="'+h+'" fill="'+tint+'" opacity=".30"/>';
+      body+='<rect x="0" y="'+(a*st)+'" width="'+w+'" height="'+(st*0.4)+'" fill="'+tint+'" opacity=".22"/>';
+    }
+  } else if(kind==="motion"){
+    body+='<rect width="'+w+'" height="'+h+'" fill="'+INK+'"/>';
+    for(var m=0;m<16;m++){
+      var y=h*rnd(seed+m*5);
+      body+='<rect x="0" y="'+y+'" width="'+w+'" height="'+(h*0.02*(1+rnd(seed+m)*4))+'" fill="'+((m%5===0)?COBALT:PAPER)+'" opacity="'+(0.12+rnd(seed+m*2)*0.6).toFixed(2)+'"/>';
+    }
+  } else { /* closeup */
+    body+='<rect width="'+w+'" height="'+h+'" fill="'+PAPER+'"/>';
+    body+='<circle cx="'+(w*0.44)+'" cy="'+(h*0.48)+'" r="'+(Math.min(w,h)*0.46)+'" fill="'+tint+'" opacity=".9"/>';
+    body+='<circle cx="'+(w*0.62)+'" cy="'+(h*0.34)+'" r="'+(Math.min(w,h)*0.14)+'" fill="'+PAPER+'" opacity=".7"/>';
+  }
+  return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="placeholder image">'+
+    '<defs><filter id="g'+id+'"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3"/>'+
+    '<feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.30"/></feComponentTransfer></filter></defs>'+
+    body+'<rect width="'+w+'" height="'+h+'" filter="url(#g'+id+')" opacity=".55" style="mix-blend-mode:multiply"/></svg>';
+}
+
+var KINDS=["figure","drape","arch","weave","motion","closeup"];
+function plateEl(o){
+  o=o||{};
+  var kind=o.kind||KINDS[(o.seed||1)%KINDS.length];
+  var cls="plate "+(o.soft?"soft":"hard");
+  var marks=o.crop?'<span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span>':'';
+  var deco=(o.tape?'<span class="tape'+(o.tape==="r"?" r":"")+'"></span>':'')+(o.pin?'<span class="pin"></span>':'')+(o.punch?'<span class="punch"></span>':'');
+  var cap=o.cap?'<span class="cap"><b>'+o.cap+'</b>'+(o.cap2?'<span>'+o.cap2+'</span>':'')+'</span>':'';
+  var stamp=o.stamp?'<span class="stamp" style="top:8px;right:8px">'+o.stamp+'</span>':'';
+  return '<div class="obj '+(o.rot||'')+'" style="'+(o.style||'')+'">'+deco+stamp+
+    '<div class="'+cls+'" style="height:'+(o.h||'260px')+'">'+plate(kind,o.seed||3,o.w||600,o.hh||800)+'</div>'+marks+cap+'</div>';
+}
+
+/* ---------------------------------------------------------
+   DATA — structure only. No invented achievements.
+   --------------------------------------------------------- */
+var PROJECTS=[
+  {
+    n:"01",
+    t:"Phantom of the Opera",
+    y:"—",
+    c:"SHOWS",
+    k:"motion",
+    
+    role:[
+      "Creative Direction",
+      "Show Direction",
+      "Choreography",
+      "Styling",
+      "Music Direction",
+      "Worldbuilding"
+    ],
+    
+    status:"Completed",
+    duration:"~10 MINUTES",
+    scale:"20 MODELS",
+    rehearsal:"2 WEEKS / DAILY",
+    
+    brief:"The Phantom of the Opera + Masks",
+    
+    intro:"What happens when the person pulling the strings discovers that the strings were never his?",
+    
+    premise:"Phantom of the Opera was reimagined as a story of masks, obsession and the sins hidden beneath performance. What begins as an elegant opera slowly becomes a story about identity, control and who is really manipulating whom.",
+    
+    concept:"The mask became more than a competition requirement. It became a symbol of social persona, hidden vulnerability and the identities we construct. The Phantom begins believing that he controls the nine Sins. By the end, the Sins have become instruments of his own destruction.",
+    
+    story:[
+      {
+        title:"THE OPERA",
+        text:"Good Christine enters with Maya. Raul and Christine share a romantic connection while Carlotta dominates the opera as its reigning prima donna."
+      },
+      {
+        title:"THE PHANTOM",
+        text:"The Phantom enters and becomes obsessed with Christine. The nine Sins emerge around him as independent embodiments of darker impulses."
+      },
+      {
+        title:"THE FALL",
+        text:"The Phantom orchestrates Carlotta's downfall through the chandelier. After her death, control of the Sins shifts to Bad Christine and Chhaya."
+      },
+      {
+        title:"THE REVEAL",
+        text:"Bad Christine draws the Phantom into a trap. Chhaya kills him, Christine returns to Raul, and the good and darker versions of Christine and Maya converge."
+      }
+    ],
+    
+    characters:{
+      christine:{
+        good:"White, delicate, Victorian and graceful.",
+        bad:"Black, darker and more controlled — a shadow of the same character."
+      },
+    
+      maya:{
+        good:"Baby pink, softer and lighter.",
+        bad:"Dark pink, heavier and more sinister."
+      },
+    
+      phantom:{
+        visual:"Black, red and flowing. The mask conceals his scars and becomes part of his vulnerability."
+      },
+    
+      sins:[
+        "Vanity",
+        "Pride",
+        "Greed",
+        "Envy",
+        "Lust",
+        "Wrath",
+        "Deception",
+        "Illusion",
+        "Selfishness"
+      ]
+    },
+  
+    masks:{
+      phantom:"The Phantom's mask hides his scars.",
+      sins:"The Sins use masks to embody the things they represent.",
+      illusion:"Illusion uses multiple faces around the head to multiply identity.",
+      deception:"Deception partially conceals the face, hiding the emotions underneath."
+    },
+  
+    chandelier:{
+      title:"THE CHANDELIER",
+      description:"The chandelier was reimagined as a deconstructed kinetic couture piece rather than a static prop.",
+      materials:[
+        "Mirror-work ghagra",
+        "Repurposed satin",
+        "Wire",
+        "LED lights",
+        "Pearls",
+        "Faux diamonds",
+        "Suspended masks"
+      ],
+      meaning:"The piece exposed its own construction through asymmetrical draping, raw transitions, reflective surfaces and suspended elements."
+    },
+  
+    choreography:{
+      philosophy:"The choreography was deliberately theatrical and character-driven rather than runway-based.",
+      process:"Karthiki and I mapped the entire stage digitally before rehearsals. We used a touchscreen and stylus to draw characters, positions, arrows, entrances, exits and movement sequences.",
+      method:"After each movement, we redrew the stage from the new final position and built the next movement from there.",
+      challenge:"One of the hardest sequences involved the nine Sins standing horizontally with two LED lights each and raising their hands in sequence to create a wave of light as the chandelier entered."
+    },
+  
+    sound:{
+      description:"The soundtrack was edited as a narrative rather than used as background music.",
+      tracks:[
+        ["Salvatore","Good Christine + Maya"],
+        ["Love Story — Indila","Raul + Good Christine"],
+        ["Enigma","Carlotta's dominance"],
+        ["Udi — Sunidhi Chauhan","Carlotta + her maidens"],
+        ["The Phantom of the Opera","Phantom enters"],
+        ["Run Down the City — Monica","The Sins enter"],
+        ["Ainsi bas la vida","The Sins reveal themselves"],
+        ["The Beginning of the End","The chandelier"],
+        ["Formula / Euphoria","The chandelier controls the Sins"],
+        ["Pride × I'm Yours","Phantom + Bad Christine"],
+        ["Skyfall","The trap deepens"],
+        ["Back to Black","Phantom is fully enticed"],
+        ["Dastaan — Om Shanti Om","Final reveal"]
+      ],
+      proud:"Pride × I'm Yours was one of the edits I was most proud of."
+    },
+  
+    lighting:{
+      description:"Lighting followed the emotional mood of the music.",
+      cues:[
+        ["White / Warm","The initial good world"],
+        ["Pink","Love"],
+        ["Purple","Carlotta / dominance"],
+        ["Red","Sinister sequences"],
+        ["Spotlights","Character moments"],
+        ["Flashing light","Disruption"]
+      ]
+    },
+  
+    styling:{
+      description:"I worked with the styling and aesthetics team on character briefs, look approvals, colour direction, sourcing, garment selection, draping and overall visual coherence.",
+      note:"Hair and makeup were handled separately; my involvement was primarily in character and fashion direction."
+    },
+  
+    production:{
+      models:"20",
+      choreographers:"3",
+      styling:"5–6",
+      backstage:"2",
+      lighting:"1",
+      rehearsal:"2 weeks / daily / minimum 2 hours",
+      process:"Styling and aesthetics developed simultaneously with rehearsals."
+    },
+  
+    challenges:[
+      "Model availability around academics.",
+      "Some rehearsals had three or more performers missing.",
+      "Limited time to rehearse lighting cues.",
+      "A physical string used during a lift broke during the show.",
+      "Some transitions became crowded because the show contained many narrative beats and songs."
+    ],
+  
+    leadership:"The directing approach was collaborative rather than authoritarian. The goal was to create an environment where people wanted to return to rehearsals, while still giving every performer a clear character and movement vocabulary.",
+  
+    outcome:"The show placed fourth in the competition. After the performance, feedback from the judges was positive, with deductions attributed to the early start and stage/logistics issues.",
+  
+    reflection:"Phantom taught me that creative direction isn't just having the idea. It is making the idea survive translation — through styling, choreography, music, lighting, lookbooks, moodboards, sourcing, logistics, documentation and people — while still feeling like one world at the end."
+  },
+  {
+    n:"02",
+    t:"Spring Summer Show",
+    y:"—",
+    c:"CREATIVE DIRECTION",
+    k:"figure",
+    role:["Creative Direction","Fashion","Show Production"]
+  },
+  {
+    n:"03",
+    t:"Rise of Feminism: From Draupadi to Durga",
+    y:"—",
+    c:"CULTURE",
+    k:"figure",
+    role:["Creative Direction","Cultural Narrative","Fashion"]
+  },
+  {
+    n:"04",
+    t:"Japanese × Schiaparelli",
+    y:"—",
+    c:"CULTURE",
+    k:"drape",
+    role:["Concept Development","Cultural Research","Fashion"]
+  },
+  {
+    n:"05",
+    t:"Shama & Parwana",
+    y:"—",
+    c:"CREATIVE DIRECTION",
+    k:"motion",
+    role:["Creative Direction","Narrative","Fashion"]
+  },
+  {
+    n:"06",
+    t:"Glitch & Glam: Mirror Malfunction",
+    y:"—",
+    c:"SHOWS",
+    k:"closeup",
+    role:["Creative Direction","Show Direction","Visual World"]
+  },
+  {
+    n:"07",
+    t:"Aladdin: The Musical",
+    y:"—",
+    c:"SHOWS",
+    k:"arch",
+    role:["Creative Direction","Fashion","Performance"]
+  },
+  {
+    n:"08",
+    t:"Jersey Unveiling",
+    y:"—",
+    c:"EVENTS",
+    k:"motion",
+    role:["Creative Direction","Event Direction","Production"]
+  },
+  {
+    n:"09",
+    t:"Indian Karkhanas",
+    y:"—",
+    c:"CULTURE",
+    k:"weave",
+    role:["Concept Development","Cultural Research","Fashion"]
+  },
+  {
+    n:"10",
+    t:"Mercury",
+    y:"—",
+    c:"FASHION",
+    k:"closeup",
+    role:["Fashion Concept","Visual Direction","Sound"]
+  },
+  {
+    n:"11",
+    t:"Neo Pharaoh",
+    y:"—",
+    c:"FASHION",
+    k:"arch",
+    role:["Fashion Concept","Visual Development"]
+  },
+  {
+    n:"12",
+    t:"Distressed Old Hollywood",
+    y:"—",
+    c:"FASHION",
+    k:"figure",
+    role:["Fashion Concept","Visual Development"]
+  },
+  {
+    n:"13",
+    t:"Hauntingly Beautiful",
+    y:"—",
+    c:"FASHION",
+    k:"motion",
+    role:["Fashion Concept","Visual Development"]
+  },
+  {
+    n:"14",
+    t:"Ethereal",
+    y:"—",
+    c:"FASHION",
+    k:"drape",
+    role:["Fashion Concept","Visual Development"]
+  },
+  {
+    n:"15",
+    t:"Post-Apocalyptic",
+    y:"—",
+    c:"FASHION",
+    k:"motion",
+    role:["Fashion Concept","Visual Development"]
+  },
+  {
+    n:"16",
+    t:"Indian Royalty",
+    y:"—",
+    c:"FASHION",
+    k:"arch",
+    role:["Fashion Concept","Visual Development"]
+  },
+  {
+    n:"17",
+    t:"Masaba for Ballroom Dancing",
+    y:"—",
+    c:"FASHION",
+    k:"figure",
+    role:["Fashion Concept","Styling","Visual Direction"]
+  },
+  {
+    n:"18",
+    t:"Mermaidcore with Belts",
+    y:"—",
+    c:"FASHION",
+    k:"drape",
+    role:["Fashion Concept","Styling","Visual Development"]
+  },
+  {
+    n:"19",
+    t:"Bratz",
+    y:"—",
+    c:"FASHION",
+    k:"figure",
+    role:["Fashion Concept","Visual Development"]
+  },
+  {
+    n:"20",
+    t:"Fashion Club",
+    y:"—",
+    c:"EVENTS",
+    k:"arch",
+    role:[
+      "President",
+      "Creative Leadership",
+      "Fashion Production",
+      "Team Direction"
+    ]
+  }
+];
+
+var CATS=[
+  "ALL",
+  "CREATIVE DIRECTION",
+  "FASHION",
+  "SHOWS",
+  "CULTURE",
+  "SOUND",
+  "EVENTS",
+  "BRAND"
+];
+var CUES=[
+  {n:"01",name:"Mercury / Night 01",purpose:"Walk music",mood:["COLD","METALLIC","SENSUAL","NOCTURNAL"],dur:"03:40"},
+  {n:"02",name:"Phantom / Entrance",purpose:"Show score",mood:["ORGAN","LOW","THEATRICAL"],dur:"02:12"},
+  {n:"03",name:"Spring / Summer — Opening",purpose:"Show score",mood:["AIR","BRIGHT","FAST"],dur:"04:05"},
+  {n:"04",name:"Club Room 02",purpose:"Event sound",mood:["WARM","CROWDED","LATE"],dur:"06:18"},
+  {n:"05",name:"Untitled Sound Experiment",purpose:"Experiment",mood:["TAPE","BROKEN"],dur:"01:47"}
+];
+var PRACTICE=[["Creative Direction","CD"],["Fashion Design","FD"],["Styling","ST"],["Show Direction","SD"],["Sound","SN"],["Visual Development","VD"],["Worldbuilding","WB"],["Events","EV"]];
+
+/* ---------------------------------------------------------
+   HOME WALL — hand-placed collage
+   --------------------------------------------------------- */
+var HOME_OBJ=[
+  {seed:2,kind:"figure",soft:1,crop:1,rot:"rot-l",h:"clamp(210px,31vh,340px)",style:"left:1%;  top:2%;  width:clamp(150px,20vw,250px);",cap:"IMG_0412.TIF",cap2:"UNCROPPED",tape:1},
+  {seed:7,kind:"motion",soft:0,rot:"rot-r",h:"clamp(120px,19vh,210px)",style:"left:26%; top:31%; width:clamp(128px,17vw,220px); z-index:24;",cap:"RUNWAY / 05",stamp:"REF 03"},
+  {seed:11,kind:"drape",soft:1,rot:"",h:"clamp(180px,27vh,300px)",style:"right:6%; top:14%; width:clamp(140px,18vw,230px);",cap:"FABRIC TEST",pin:1},
+  {seed:19,kind:"arch",soft:0,crop:1,rot:"rot-l2",h:"clamp(130px,20vh,215px)",style:"left:52%; top:47%; width:clamp(160px,22vw,290px); z-index:26;",cap:"SPACE / 01",cap2:"LOCATION SCOUT"},
+  {seed:23,kind:"weave",soft:1,rot:"rot-r2",h:"clamp(92px,14vh,140px)",style:"left:7%;  top:58%; width:clamp(112px,14vw,180px);",cap:"MATERIAL"},
+  {seed:31,kind:"closeup",soft:1,rot:"",h:"clamp(120px,18vh,190px)",style:"right:19%; top:60%; width:clamp(118px,15vw,190px); z-index:25;",cap:"DETAIL",tape:"r"}
+];
+
+function buildHome(){
+  var s=document.getElementById("homeScatter");
+  var html=HOME_OBJ.map(plateEl).join("");
+
+  /* ID card */
+  html+='<div class="obj rot-r" style="position:absolute; left:33%; top:66%; z-index:28">'+
+    '<div class="idcard"><div class="row"><span>ARCHIVE PASS</span><span>001</span></div>'+
+    '<div class="nm">DHWAJ<br>JAIN</div><div class="rl">Creative Director</div>'+
+    '<div class="row" style="margin-top:9px"><span>PUNE / IN</span><span>ACCESS · ALL</span></div>'+
+    '<div class="bar"></div></div></div>';
+
+  /* annotated slip */
+  html+='<div class="obj" style="position:absolute; right:2%; top:40%; width:clamp(140px,16vw,206px); z-index:27">'+
+    '<div class="noteslip"><div class="lab red">ANNOTATION</div>'+
+    '<div class="hand" style="margin-top:6px">build the world<br>then cut the pattern</div></div></div>';
+
+  /* system readout */
+  html+='<div class="obj" style="position:absolute; left:2%; top:84%; z-index:27">'+
+    '<div class="lab blue">SYS / STATUS</div>'+
+    '<div class="lab" style="margin-top:4px" id="sysreadout">CAM 01 · REC · 00:00:00</div></div>';
+
+  /* colour reference strip */
+  html+='<div class="obj rot-l" style="position:absolute; left:69%; top:6%; width:clamp(90px,11vw,150px); z-index:23">'+
+    '<div class="swatchrow" style="height:34px"><i style="background:#F5F2EA"></i><i style="background:#143BFF"></i><i style="background:#111"></i><i style="background:#C8321E"></i><i style="background:#DCD3BE"></i></div>'+
+    '<span class="cap"><b>PALETTE / 001</b></span></div>';
+
+  s.innerHTML=html;
+  drawHomeThreads();
+}
+
+function drawHomeThreads(){
+  var svg=document.getElementById("homeThreads");
+  var wall=svg.parentElement, r=wall.getBoundingClientRect();
+  var W=r.width, H=r.height;
+  svg.setAttribute("viewBox","0 0 "+W+" "+H);
+  svg.setAttribute("width",W); svg.setAttribute("height",H);
+  function P(x,y){return [W*x,H*y];}
+  var a=P(.14,.42), b=P(.34,.58), c=P(.62,.70), d=P(.84,.40), e=P(.46,.86);
+  var p=[];
+  p.push('<path d="M'+a[0]+' '+a[1]+' Q '+((a[0]+b[0])/2)+' '+(a[1]-46)+' '+b[0]+' '+b[1]+'"/>');
+  p.push('<path d="M'+b[0]+' '+b[1]+' L '+c[0]+' '+c[1]+'"/>');
+  p.push('<path class="blue" d="M'+c[0]+' '+c[1]+' L '+d[0]+' '+d[1]+'"/>');
+  p.push('<path class="blue" d="M'+e[0]+' '+e[1]+' L '+d[0]+' '+d[1]+'"/>');
+  [a,b,c,d,e].forEach(function(pt){ p.push('<circle cx="'+pt[0]+'" cy="'+pt[1]+'" r="2.6"/>'); });
+  svg.innerHTML=p.join("");
+}
+
+/* ticker */
+(function(){
+  var items=["INDEX 001 → ∞","CREATIVE DIRECTION","FASHION","SOUND","IMAGE","WORLDBUILDING","SHOW DIRECTION","ARCHIVE OPEN","PUNE / IN","STYLING","EVENT DESIGN"];
+  var row=items.concat(items).map(function(i){return "<span>"+i+"</span>";}).join("");
+  document.getElementById("tick").innerHTML=row;
+})();
+
+/* ---------------------------------------------------------
+   INDEX
+   --------------------------------------------------------- */
+var activeCat="ALL";
+function buildFilters(){
+  document.getElementById("filters").innerHTML=CATS.map(function(c){
+    return '<button data-cat="'+c+'" aria-pressed="'+(c===activeCat)+'">'+c+'</button>';
+  }).join("");
+}
+function buildIndex(){
+  var rows=PROJECTS
+    .filter(function(p){
+      return activeCat==="ALL" || p.c===activeCat;
+    })
+    .map(function(p,i){
+
+      var roles=(p.role||[])
+        .map(function(r){
+          return '<span>'+r+'</span>';
+        })
+        .join("");
+
+      return '<button class="idxrow" data-proj="'+p.n+'">'+
+        '<span class="num">'+p.n+'</span>'+
+        '<span class="project-info">'+
+          '<span class="ttl">'+p.t+'</span>'+
+          '<span class="roles">'+roles+'</span>'+
+        '</span>'+
+        '<span class="cat">'+p.c+'</span>'+
+        '<span class="thumb plate soft">'+
+          plate(p.k,40+i,300,200)+
+        '</span>'+
+      '</button>';
+    })
+    .join("");
+
+  document.getElementById("idxList").innerHTML=
+    rows ||
+    '<p class="lab" style="padding:26px 0">NO ENTRIES UNDER THIS FILTER</p>';
+
+  /* loose collage beneath the list */
+  var st=document.getElementById("idxStack");
+
+  st.innerHTML=
+    plateEl({
+      seed:5,
+      kind:"figure",
+      soft:1,
+      crop:1,
+      rot:"rot-l",
+      h:"clamp(170px,26vh,260px)",
+      style:"position:absolute;left:3%;top:6%;width:clamp(130px,17vw,220px)",
+      cap:"SHEET A"
+    })+
+
+    plateEl({
+      seed:9,
+      kind:"arch",
+      rot:"rot-r",
+      h:"clamp(120px,18vh,190px)",
+      style:"position:absolute;left:29%;top:30%;width:clamp(150px,20vw,260px);z-index:6",
+      cap:"SHEET B",
+      tape:1
+    })+
+
+    plateEl({
+      seed:13,
+      kind:"drape",
+      soft:1,
+      rot:"",
+      h:"clamp(150px,23vh,230px)",
+      style:"position:absolute;right:22%;top:2%;width:clamp(120px,15vw,200px)",
+      cap:"SHEET C",
+      pin:1
+    })+
+
+    plateEl({
+      seed:17,
+      kind:"motion",
+      rot:"rot-l2",
+      h:"clamp(100px,15vh,160px)",
+      style:"position:absolute;right:2%;top:44%;width:clamp(140px,18vw,240px);z-index:7",
+      cap:"SHEET D",
+      stamp:"HOLD"
+    })+
+
+    '<div class="obj rot-r" style="position:absolute;left:54%;top:58%;width:clamp(150px,17vw,220px);z-index:8">'+
+      '<div class="doc ruled">'+
+        '<h4>Filing note</h4>'+
+        '<p>Projects move between fashion, culture, performance and experience.</p>'+
+      '</div>'+
+    '</div>';
+}
+/* ---------------------------------------------------------
+   PROJECT CASE FILE
+   --------------------------------------------------------- */
+var CHAPTERS=[
+  {i:"I",n:"The Idea"},{i:"II",n:"World"},{i:"III",n:"Research"},{i:"IV",n:"Mood"},
+  {i:"V",n:"Design"},{i:"VI",n:"Movement"},{i:"VII",n:"Sound"},{i:"VIII",n:"Final"}
+];
+function buildProject(num){
+  var p = PROJECTS.filter(function(x){
+    return x.n === num;
+  })[0];
+
+  if(!p) return;
+
+  var v = document.getElementById("v-project");
+
+  /* =========================================================
+     PHANTOM OF THE OPERA — CASE STUDY
+     ========================================================= */
+
+  if(p.t === "Phantom of the Opera"){
+
+    var h = '';
+
+    h += '<button class="lab blue" data-go="index" '+
+         'style="background:none;border:0;padding:12px 0;cursor:pointer">'+
+         '← BACK TO INDEX</button>';
+
+    /* COVER */
+    h +=
+      '<section style="padding:42px 0 55px;border-bottom:1.5px solid var(--ink);">'+
+        '<div class="lab blue">PROJECT 01 / CREATIVE DIRECTION / SHOW DIRECTION</div>'+
+        '<h1 class="mega wide" style="font-size:clamp(52px,9vw,125px); margin-top:18px;line-height:.78;">'+
+          'PHANTOM<br>OF THE<br>OPERA'+
+        '</h1>'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:50px;">'+
+          '<p class="serifless-body" style="font-size:18px;max-width:48ch;">'+
+            'What happens when the person pulling the strings discovers that the strings were never his?'+
+          '</p>'+
+          '<div class="doc">'+
+            '<div class="lab blue">PROJECT FILE</div>'+
+            '<p style="margin-top:12px"><b>Role</b><br>Creative Direction · Show Direction · Worldbuilding · Sound</p>'+
+            '<p><b>Scale</b><br>20 models · 3 choreographers · 5–6 styling / aesthetics · lighting · backstage</p>'+
+            '<p><b>Process</b><br>2 weeks · daily rehearsals · minimum 2 hours</p>'+
+            '<p><b>Result</b><br>4th place · judge recognition</p>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
+
+    /* BRIEF */
+    h +=
+      '<section style="padding:80px 0;">'+
+        '<div class="lab blue">01 / BRIEF</div>'+
+        '<h2 class="chapter" style="margin-top:12px;">THE BRIEF</h2>'+
+        '<div class="col-span" style="margin-top:30px;">'+
+          '<div class="c-l4">'+
+            '<p class="serifless-body">'+
+              'A nine-team campus fashion competition built around 12 possible themes and 12 props. '+
+              'We selected <b>The Phantom of the Opera</b> and the mask, then built the show around identity, '+
+              'desire, performance and the things people hide.'+
+            '</p>'+
+          '</div>'+
+          '<div class="c-r5">'+
+            '<div class="doc ruled">'+
+              '<h4>Original question</h4>'+
+              '<p>How does society make people hide their fears and sins behind a socially acceptable identity?</p>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
+
+    /* CONCEPT */
+    h +=
+      '<section style="padding:70px 0;border-top:1px solid var(--ink-14);">'+
+        '<div class="lab red">02 / CONCEPT</div>'+
+        '<h2 class="chapter" style="margin-top:12px;">THE MASK<br>WAS NEVER<br>JUST A MASK.</h2>'+
+        '<p class="serifless-body" style="margin-top:28px;font-size:17px;max-width:62ch;">'+
+          'The show reimagined The Phantom of the Opera through gothic opera and avant-garde couture. '+
+          'Beauty was exaggerated, distorted and deconstructed. The opera house became an unsettling world '+
+          'where masks represented both literal characters and the identities people perform for society.'+
+        '</p>'+
+        '<div class="swatchrow" style="margin-top:40px;height:65px;">'+
+          '<i style="background:#111"></i>'+
+          '<i style="background:#3A0B0B"></i>'+
+          '<i style="background:#F5F2EA"></i>'+
+          '<i style="background:#143BFF"></i>'+
+          '<i style="background:#C8321E"></i>'+
+        '</div>'+
+        '<div class="lab" style="margin-top:8px;">GOTHIC / OPULENT / DISTORTED / THEATRICAL</div>'+
+      '</section>';
+
+    /* STORY */
+    h +=
+      '<section style="padding:80px 0;">'+
+        '<div class="lab blue">03 / STORY</div>'+
+        '<h2 class="chapter">A SHOW THAT<br>CHANGES ITS<br>MEANING.</h2>'+
+        '<div class="col-span" style="margin-top:35px;">'+
+          '<div class="c-l4">'+
+            '<p class="serifless-body">'+
+              'The audience first sees a beautiful fashion story. Christine and Maya enter with grace. '+
+              'Carlotta establishes her dominance. Then the Phantom arrives and the atmosphere changes.'+
+            '</p>'+
+          '</div>'+
+          '<div class="c-r5">'+
+            '<div class="doc">'+
+              '<h4>Narrative progression</h4>'+
+              '<p>Beauty → dominance → disturbance → sin → death → manipulation → obsession → reveal → revenge</p>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+        '<p class="hand" style="margin-top:35px;font-size:28px;">'+
+          'the audience thinks they know who controls the story →'+
+        '</p>'+
+        '<p class="serifless-body" style="margin-top:15px;">'+
+          'But the Phantom gradually becomes a victim of the very sins he believes he controls.'+
+        '</p>'+
+      '</section>';
+
+    /* CHARACTERS */
+    h +=
+      '<section style="padding:80px 0;border-top:1px solid var(--ink-14);">'+
+        '<div class="lab blue">04 / CHARACTER SYSTEM</div>'+
+        '<h2 class="chapter">EVERY CHARACTER<br>HAD A VISUAL LOGIC.</h2>'+
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px;">'+
+          '<div class="doc"><h4>Christine</h4><p>White, delicate, Victorian, lace, satin and softness. She represents the poised side of the story.</p></div>'+
+          '<div class="doc"><h4>Bad Christine</h4><p>Black, darker, more seductive and controlled. She becomes central to the final trap.</p></div>'+
+          '<div class="doc"><h4>Phantom</h4><p>Black, red and flowing. His mask hides scars and vulnerability while projecting control.</p></div>'+
+          '<div class="doc"><h4>Carlotta</h4><p>Red corset, lace, beads and mask. Dominant, theatrical and deliberately excessive.</p></div>'+
+          '<div class="doc"><h4>Good Maya</h4><p>Soft pink and graceful, paired visually with Christine.</p></div>'+
+          '<div class="doc"><h4>Bad Maya / Chhaya</h4><p>Darker pink, heavier makeup and ultimately involved in the Phantom’s downfall.</p></div>'+
+        '</div>'+
+      '</section>';
+
+    /* SINS */
+    h +=
+      '<section style="padding:80px 0;">'+
+        '<div class="lab red">05 / THE NINE SINS</div>'+
+        '<h2 class="chapter">THEY WERE NOT<br>EXTENSIONS OF HIM.</h2>'+
+        '<p class="serifless-body" style="margin-top:25px;">'+
+          'The nine Sins existed as independent characters. Each one embodied a different form of human darkness '+
+          'through costume, mask, movement and facial language.'+
+        '</p>'+
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;border-top:1px solid var(--ink);">'+
+          ['VANITY','PRIDE','GREED','ENVY','LUST','WRATH','DECEPTION','ILLUSION','OBSESSION'].map(function(s,i){
+            return '<div style="padding:18px 12px;border-bottom:1px solid var(--ink-14);font-family:var(--display);font-weight:800;font-size:clamp(22px,3vw,42px);">'+
+              '<span class="lab blue">0'+(i+1)+'</span><br>'+s+
+            '</div>';
+          }).join('')+
+        '</div>'+
+      '</section>';
+
+    /* MASK */
+    h +=
+      '<section style="padding:80px 0;background:var(--ink);color:var(--paper);margin-left:calc(-1 * var(--gut));margin-right:calc(-1 * var(--gut));padding-left:var(--gut);padding-right:var(--gut);">'+
+        '<div class="lab" style="color:var(--cobalt);">06 / MASK</div>'+
+        '<h2 class="chapter" style="margin-top:12px;">WHAT REMAINS<br>WHEN THE MASK<br>FALLS?</h2>'+
+        '<p style="max-width:60ch;margin-top:30px;color:rgba(245,242,234,.7);font-size:16px;">'+
+          'The mask began as a competition requirement, but became the central language of the show. '+
+          'The Phantom used it to hide his scars. The Sins used masks to embody what they represented. '+
+          'Illusion carried multiple faces around the head. Deception partially concealed the face to hide emotion.'+
+        '</p>'+
+      '</section>';
+
+    /* CHANDELIER */
+    h +=
+      '<section style="padding:90px 0;">'+
+        '<div class="lab red">07 / CHANDELIER</div>'+
+        '<h2 class="chapter">THE CHANDELIER<br>WALKED INTO<br>THE STAGE.</h2>'+
+        '<div class="col-span" style="margin-top:35px;">'+
+          '<div class="c-l4">'+
+            '<div class="doc">'+
+              '<h4>Construction</h4>'+
+              '<p>Wire · LEDs / battery LEDs · pearls · fake diamonds · mirror-work ghagra · torn fabric</p>'+
+              '<p>Built by Dhwaj with the aesthetic / styling team.</p>'+
+            '</div>'+
+          '</div>'+
+          '<div class="c-r5">'+
+            '<p class="serifless-body">'+
+              'The chandelier was not treated as stage decoration. It became a moving couture object and a narrative character. '+
+              'It entered during the death sequence and moved around Carlotta to create the illusion of the chandelier killing her.'+
+            '</p>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
+
+    /* CHOREOGRAPHY */
+    h +=
+      '<section style="padding:80px 0;border-top:1px solid var(--ink-14);">'+
+        '<div class="lab blue">08 / CHOREOGRAPHY</div>'+
+        '<h2 class="chapter">CHOREOGRAPHY<br>WAS DRAWN<br>BEFORE IT WAS DANCED.</h2>'+
+        '<p class="serifless-body" style="margin-top:25px;">'+
+          'Movement was planned on a touchscreen laptop using a stylus. Characters became dots, arrows represented movement, '+
+          'and entries and exits were mapped before teaching the sequence on stage.'+
+        '</p>'+
+        '<div class="doc ruled" style="margin-top:35px;max-width:650px;">'+
+          '<h4>Movement system</h4>'+
+          '<p>Character position → direction → entry / exit → next position → next movement</p>'+
+          '<p>Then: teach immediately on stage.</p>'+
+        '</div>'+
+      '</section>';
+
+    /* MOVEMENT */
+    h +=
+      '<section style="padding:80px 0;">'+
+        '<div class="lab red">09 / MOVEMENT LANGUAGE</div>'+
+        '<h2 class="chapter">NOT A RUNWAY.<br>A PERFORMANCE.</h2>'+
+        '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:35px;">'+
+          '<div class="doc"><h4>Christine</h4><p>Poise, grace and controlled movement.</p></div>'+
+          '<div class="doc"><h4>Bad Christine</h4><p>Dark feminine energy and deliberate control.</p></div>'+
+          '<div class="doc"><h4>Phantom</h4><p>Testosterone-heavy, powerful male energy.</p></div>'+
+          '<div class="doc"><h4>The Sins</h4><p>Each sin expressed through eyes, face and walk.</p></div>'+
+        '</div>'+
+        '<p class="hand" style="margin-top:35px;font-size:28px;">nine bodies. one horizontal line. one wave.</p>'+
+      '</section>';
+
+    /* SOUND */
+    h +=
+      '<section style="padding:80px 0;border-top:1px solid var(--ink-14);">'+
+        '<div class="lab blue">10 / SOUND DIRECTION</div>'+
+        '<h2 class="chapter">THE STORY<br>WAS EDITED<br>INTO THE MUSIC.</h2>'+
+        '<p class="serifless-body" style="margin-top:25px;">'+
+          'The soundtrack was built as a narrative rather than a playlist. Songs were cut, layered and transitioned around character entrances, reveals and movement.'+
+        '</p>'+
+        '<div style="margin-top:35px;border-top:1px solid var(--ink);">'+
+          [
+            ['01','Salvatore','Good Christine + Maya'],
+            ['02','Love Story – Indila','Raul + Good Christine'],
+            ['03','Enigma','Carlotta dominance'],
+            ['04','Udi – Sunidhi Chauhan','Carlotta + maidens'],
+            ['05','The Phantom of the Opera','Phantom entry'],
+            ['06','Run Down the City – Monica','Sins entry'],
+            ['07','Ainsi bas la vida','Sinistry'],
+            ['08','The Beginning of the End','Chandelier / Carlotta'],
+            ['09','Formula-Euphoria','Chandelier controls Sins'],
+            ['10','Pride × I’m Yours','Bad Christine + Phantom'],
+            ['11','Skyfall','Phantom + Bad Christine'],
+            ['12','Back to Black','Love trap / Sins return'],
+            ['13','Dastaan – Om Shanti Om','Final reveal / Phantom killed']
+          ].map(function(s){
+            return '<div style="display:grid;grid-template-columns:42px 1fr 1fr;gap:15px;padding:13px 0;border-bottom:1px solid var(--ink-14);">'+
+              '<span class="lab blue">'+s[0]+'</span>'+
+              '<b style="font-family:var(--display);text-transform:uppercase;">'+s[1]+'</b>'+
+              '<span class="lab">'+s[2]+'</span>'+
+            '</div>';
+          }).join('')+
+        '</div>'+
+      '</section>';
+
+    /* LIGHTING */
+    h +=
+      '<section style="padding:80px 0;">'+
+        '<div class="lab red">11 / LIGHTING</div>'+
+        '<h2 class="chapter">COLOUR<br>BECAME<br>EMOTION.</h2>'+
+        '<div class="swatchrow" style="margin-top:35px;height:70px;">'+
+          '<i style="background:#F5F2EA"></i>'+
+          '<i style="background:#E8A0B5"></i>'+
+          '<i style="background:#8B2C35"></i>'+
+          '<i style="background:#6C2D8F"></i>'+
+          '<i style="background:#111"></i>'+
+        '</div>'+
+        '<div class="doc" style="margin-top:25px;max-width:650px;">'+
+          '<p>Love sequences used pink. Sinister moments moved toward red. Carlotta’s dominance used purple. The opening good section used white / warm light.</p>'+
+          '<p>Flashing lights and spotlights were used to heighten the theatrical shifts.</p>'+
+        '</div>'+
+      '</section>';
+
+    /* STYLING */
+    h +=
+      '<section style="padding:80px 0;border-top:1px solid var(--ink-14);">'+
+        '<div class="lab blue">12 / STYLING & AESTHETICS</div>'+
+        '<h2 class="chapter">EVERY LOOK<br>HAD A STORY.</h2>'+
+        '<p class="serifless-body" style="margin-top:25px;">'+
+          'Styling direction included approving looks, defining character colours, shaping silhouettes, sourcing clothes and fabric, and working with the team on draping.'+
+        '</p>'+
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px;">'+
+          '<div class="doc"><h4>Christine</h4><p>White · delicate · Victorian · lace · satin</p></div>'+
+          '<div class="doc"><h4>Phantom</h4><p>Black · red · flowing · mask · scars</p></div>'+
+          '<div class="doc"><h4>Illusion</h4><p>Blue satin / mesh · translucent effect · multiple faces</p></div>'+
+          '<div class="doc"><h4>Deception</h4><p>Dark blue satin · Victorian drape · snake motif</p></div>'+
+          '<div class="doc"><h4>Wrath</h4><p>Red / black · wings · alta · messy red glitter hair</p></div>'+
+          '<div class="doc"><h4>Carlotta</h4><p>Red corset · lace tights · beads · red lace mask</p></div>'+
+        '</div>'+
+      '</section>';
+
+    /* PRODUCTION */
+    h +=
+      '<section style="padding:80px 0;">'+
+        '<div class="lab red">13 / PRODUCTION</div>'+
+        '<h2 class="chapter">THE IDEA<br>HAD TO SURVIVE<br>REAL LIFE.</h2>'+
+        '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px;">'+
+          '<div class="doc"><h4>People</h4><p>20 models · 3 choreographers · 5–6 styling / aesthetics · 2 backstage · 1 lighting</p></div>'+
+          '<div class="doc"><h4>Rehearsal</h4><p>Two weeks, every day, minimum two hours.</p></div>'+
+          '<div class="doc"><h4>Coordination</h4><p>Attendance · outfits · fabrics · rehearsals · transitions · lighting · backstage</p></div>'+
+        '</div>'+
+      '</section>';
+
+    /* REALITY */
+    h +=
+      '<section style="padding:80px 0;background:var(--paper-2);margin-left:calc(-1 * var(--gut));margin-right:calc(-1 * var(--gut));padding-left:var(--gut);padding-right:var(--gut);">'+
+        '<div class="lab blue">14 / REALITY</div>'+
+        '<h2 class="chapter">THE PLAN<br>MEETS REAL LIFE.</h2>'+
+        '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:35px;">'+
+          '<div class="doc"><h4>Constraint</h4><p>Academic schedules meant some models were absent or arrived late.</p></div>'+
+          '<div class="doc"><h4>Constraint</h4><p>Lighting rehearsal time was limited and the vendor did not always follow cues.</p></div>'+
+          '<div class="doc"><h4>Unexpected</h4><p>The string for the Bad Christine lift broke, but the audience did not see the failure.</p></div>'+
+          '<div class="doc"><h4>Reflection</h4><p>Some transitions could have been cleaner and the soundtrack could have been tighter.</p></div>'+
+        '</div>'+
+      '</section>';
+
+    /* LEADERSHIP */
+    h +=
+      '<section style="padding:80px 0;">'+
+        '<div class="lab blue">15 / LEADERSHIP</div>'+
+        '<h2 class="chapter">MAKE THEM<br>WANT TO<br>COME BACK.</h2>'+
+        '<p class="serifless-body" style="margin-top:25px;">'+
+          'The approach was collaborative rather than strict. Character briefs gave people a clear direction while still leaving room for performers and the creative team to contribute ideas.'+
+        '</p>'+
+        '<div class="doc ruled" style="margin-top:35px;max-width:700px;">'+
+          '<h4>What leadership looked like</h4>'+
+          '<p>Brief the character → teach the walk → listen to ideas → coordinate departments → solve the problem → keep the team moving.</p>'+
+        '</div>'+
+      '</section>';
+
+    /* OUTCOME */
+    h +=
+      '<section style="padding:80px 0;border-top:1px solid var(--ink-14);">'+
+        '<div class="lab red">16 / OUTCOME</div>'+
+        '<h2 class="chapter">WE ACTUALLY<br>PULLED IT OFF.</h2>'+
+        '<div class="col-span" style="margin-top:35px;">'+
+          '<div class="c-l4">'+
+            '<div class="doc">'+
+              '<h4>Competition result</h4>'+
+              '<p>4th place.</p>'+
+              '<p>The judges described the show as fabulous, according to the team’s post-show feedback.</p>'+
+            '</div>'+
+          '</div>'+
+          '<div class="c-r5">'+
+            '<p class="serifless-body">'+
+              'The project became less about a single garment or runway and more about coordinating an entire experience: styling, choreography, music, lighting, props, production and people.'+
+            '</p>'+
+          '</div>'+
+        '</div>'+
+      '</section>';
+
+    /* REFLECTION */
+    h +=
+      '<section style="padding:100px 0;">'+
+        '<div class="lab blue">17 / REFLECTION</div>'+
+        '<h2 class="chapter">CREATIVE DIRECTION<br>IS MAKING THE IDEA<br>SURVIVE TRANSLATION.</h2>'+
+        '<p class="serifless-body" style="font-size:18px;margin-top:35px;max-width:65ch;">'+
+          'Phantom taught me that creative direction is not just having the idea. It is coordinating many disciplines into one experience — then adapting that experience when people, time, materials and production do not behave exactly as planned.'+
+        '</p>'+
+        '<p class="hand" style="font-size:32px;margin-top:35px;">idea → people → translation → stage → experience</p>'+
+      '</section>';
+
+    /* END */
+    h +=
+      '<section style="padding:100px 0;border-top:1.5px solid var(--ink);">'+
+        '<div class="lab red">END OF FILE / 001</div>'+
+        '<h2 class="mega" style="font-size:clamp(50px,10vw,140px);margin-top:20px;">'+
+          'THE MASK<br>FELL.<br>THE STORY<br>DIDN’T.'+
+        '</h2>'+
+        '<button data-go="index" class="lab blue" style="margin-top:45px;background:none;border:0;padding:0;cursor:pointer;">← RETURN TO ARCHIVE</button>'+
+      '</section>';
+
+    v.innerHTML = h;
+
+  } else {
+
+    /* Temporary state for the other projects */
+    v.innerHTML =
+      '<button class="lab blue" data-go="index" style="background:none;border:0;padding:12px 0;cursor:pointer">← BACK TO INDEX</button>'+
+      '<section style="padding:80px 0;">'+
+        '<div class="lab blue">CASE FILE / '+p.n+'</div>'+
+        '<h1 class="mega wide" style="font-size:clamp(55px,12vw,160px);margin-top:20px;">'+p.t+'</h1>'+
+        '<p class="serifless-body" style="margin-top:30px;">CASE FILE IN PROGRESS.</p>'+
+      '</section>';
+  }
+}
+function bars(n,h){
+  var o="";
+  for(var i=0;i<n;i++){ o+='<i style="height:'+(12+Math.round(rnd(i*7.7)*(h*4)))+'%"></i>'; }
+  return o;
+}
+
+/* ---------------------------------------------------------
+   WORLDS / ARCHIVE WALLS
+   --------------------------------------------------------- */
+function wallItems(seedBase, labels, count){
+  var out=[];
+  for(var i=0;i<count;i++){
+    var s=seedBase+i*3;
+    var r=rnd(s);
+    if(r<0.14){
+      out.push('<div class="noteslip '+(i%2?"rot-r":"rot-l")+'"><div class="lab red">NOTE '+(i+1)+'</div><div class="hand" style="margin-top:6px">'+
+        ["keep the hem raw","this blue only","too clean — redo","sound first","slower walk","find this fabric","cut from the archive"][i%7]+'</div></div>');
+    } else if(r<0.24){
+      out.push('<div class="swatchrow"><i style="background:#F5F2EA"></i><i style="background:#143BFF"></i><i style="background:#111"></i><i style="background:#DCD3BE"></i><i style="background:#C8321E"></i></div>');
+    } else if(r<0.33){
+      out.push('<div class="doc '+(i%2?"ruled":"")+'"><h4>'+labels[i%labels.length]+'</h4><p>Placeholder entry. Replace with real reference material.</p></div>');
+    } else {
+      var hh=[150,200,250,300,190,340][i%6];
+      out.push(plateEl({seed:s,kind:KINDS[i%6],soft:(i%3===0),crop:(i%5===0),rot:(i%4===0?"rot-l":(i%4===2?"rot-r":"")),
+        h:hh+"px",cap:labels[i%labels.length]+" / "+String(i+1).padStart(2,"0"),
+        tape:(i%6===0?1:0),pin:(i%7===3?1:0)}));
+    }
+  }
+  return out.join("");
+}
+function buildWorlds(){
+  document.getElementById("worldsWall").innerHTML=
+    wallItems(200,["MOOD","RESEARCH","MATERIAL","SPACE","IMAGE","MOVEMENT","REFERENCE"],22);
+}
+function buildArchive(){
+  document.getElementById("archiveWall").innerHTML=
+    wallItems(400,["BACKSTAGE","SKETCH","REJECTED","PROCESS","SCREENSHOT","FABRIC","OBSERVATION"],26);
+}
+
+/* ---------------------------------------------------------
+   DESIGN
+   --------------------------------------------------------- */
+function buildDesign(){
+  var steps=["Concept","Reference","Sketch","Material","Construction","Final look"];
+  var h='<div class="col-span"><div class="c-l4">'+
+    '<p class="serifless-body">Garments, objects, and the failures in between. Technical material sits beside the image rather than under it.</p></div>'+
+    '<div class="c-r5">'+plateEl({seed:301,kind:"drape",soft:1,crop:1,h:"clamp(230px,40vh,400px)",rot:"rot-r",cap:"LOOK 01",cap2:"DEVELOPMENT"})+'</div></div>';
+
+  h+='<div class="band"><span class="n">D/01</span><span class="t">Development Sequence</span><span class="f">SIX STAGES</span></div>';
+  h+='<div class="col-span" style="margin-top:20px">';
+  steps.forEach(function(s,i){
+    var col=(i%3===0)?"grid-column:1/5":(i%3===1?"grid-column:5/9":"grid-column:9/13");
+    h+='<div style="'+col+';margin-top:'+((i%3)*34)+'px">'+
+      '<div class="lab blue">STAGE 0'+(i+1)+'</div>'+
+      '<h3 class="chapter" style="font-size:clamp(20px,2.6vw,34px);margin-top:5px">'+s+'</h3>'+
+      plateEl({seed:310+i*4,kind:KINDS[(i+1)%6],soft:(i%2===1),h:"clamp(150px,24vh,260px)",rot:(i%2?"rot-l":"rot-r"),cap:s.toUpperCase()})+
+      '</div>';
+  });
+  h+='</div>';
+
+  /* tech pack */
+  h+='<div class="band"><span class="n">D/02</span><span class="t">Technical Sheet</span><span class="f">PLACEHOLDER SPEC</span></div>';
+  h+='<div class="col-span" style="margin-top:18px"><div class="c-l4">'+
+    '<div class="folder" data-tab="TECH PACK / 001">'+
+    '<table style="width:100%;border-collapse:collapse;font-family:var(--sys);font-size:10px;letter-spacing:.08em">'+
+    [["STYLE","—"],["FABRIC","—"],["LINING","—"],["TRIM","—"],["COLOURWAY","COBALT / PAPER"],["FIT","—"]].map(function(r){
+      return '<tr><td style="padding:6px 0;border-bottom:1px solid rgba(17,17,17,.1);color:var(--ink-35)">'+r[0]+'</td>'+
+             '<td style="padding:6px 0;border-bottom:1px solid rgba(17,17,17,.1);text-align:right">'+r[1]+'</td></tr>';
+    }).join("")+'</table></div></div>'+
+    '<div class="c-r5">'+plateEl({seed:360,kind:"weave",h:"clamp(180px,30vh,320px)",crop:1,cap:"MATERIAL TEST",stamp:"SWATCH"})+'</div></div>';
+
+  document.getElementById("designBody").innerHTML=h;
+}
+
+/* ---------------------------------------------------------
+   SOUND
+   --------------------------------------------------------- */
+function buildSound(){
+  document.getElementById("cueList").innerHTML=CUES.map(function(c,i){
+    return '<button class="cue" data-cue="'+c.n+'">'+
+      '<span class="cn">'+c.n+'</span>'+
+      '<span><span class="name">'+c.name+'</span>'+
+      '<span class="mood">'+c.mood.map(function(m){return "<i>"+m+"</i>";}).join("")+'</span></span>'+
+      '<span><span class="wave">'+bars(30,9+i)+'</span><span class="dur">'+c.dur+' · '+c.purpose.toUpperCase()+'</span></span>'+
+    '</button>';
+  }).join("");
+  document.getElementById("soundPlates").innerHTML=
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--gut)">'+
+    plateEl({seed:501,kind:"motion",h:"clamp(150px,24vh,230px)",rot:"rot-l",cap:"STAGE / LIGHT"})+
+    plateEl({seed:504,kind:"closeup",soft:1,h:"clamp(150px,24vh,230px)",rot:"rot-r",cap:"MONITOR",pin:1})+
+    '</div>';
+}
+
+/* ---------------------------------------------------------
+   ABOUT
+   --------------------------------------------------------- */
+function buildAbout(){
+  document.getElementById("practiceGrid").innerHTML=PRACTICE.map(function(p){
+    return '<div><i>'+p[1]+'</i><b>'+p[0]+'</b></div>';
+  }).join("");
+  document.getElementById("aboutPlates").innerHTML=
+    plateEl({seed:601,kind:"figure",soft:1,crop:1,h:"clamp(260px,50vh,480px)",rot:"rot-r",cap:"PORTRAIT",cap2:"PLACEHOLDER",tape:1})+
+    '<div style="margin-top:44px">'+plateEl({seed:604,kind:"arch",h:"clamp(140px,22vh,220px)",rot:"rot-l",cap:"STUDIO"})+'</div>';
+}
+
+/* ---------------------------------------------------------
+   TRANSPORT (preview only — no audio files in this build)
+   --------------------------------------------------------- */
+var cur=0, playing=false, pos=0, timer=null;
+function secs(s){var m=Math.floor(s/60),x=Math.floor(s%60);return (m<10?"0":"")+m+":"+(x<10?"0":"")+x;}
+function durOf(i){var p=CUES[i].dur.split(":");return (+p[0])*60+(+p[1]);}
+function paintTransport(){
+  var c=CUES[cur];
+  document.getElementById("tName").textContent=c.name.toUpperCase();
+  document.getElementById("tSub").textContent="CUE "+c.n+" · "+c.purpose.toUpperCase()+" · "+c.mood.join(" / ");
+  document.getElementById("tTime").textContent=secs(pos)+" / "+c.dur;
+  document.getElementById("tBar").style.width=(pos/durOf(cur)*100)+"%";
+  document.getElementById("tPlay").textContent=playing?"❚❚":"▶";
+  document.getElementById("tState").textContent=playing?"TRANSPORT RUNNING — NO AUDIO FILE LOADED":"NO AUDIO FILE LOADED — TRANSPORT PREVIEW";
+  Array.prototype.forEach.call(document.querySelectorAll(".cue"),function(b){
+    b.setAttribute("aria-current", b.getAttribute("data-cue")===CUES[cur].n && playing ? "true":"false");
+  });
+}
+function tick(){ pos+=1; if(pos>=durOf(cur)){ pos=0; cur=(cur+1)%CUES.length; } paintTransport(); }
+function setPlay(v){
+  playing=v; clearInterval(timer);
+  if(playing) timer=setInterval(tick,1000);
+  paintTransport();
+}
+document.getElementById("tPlay").addEventListener("click",function(){ setPlay(!playing); });
+document.getElementById("tNext").addEventListener("click",function(){ cur=(cur+1)%CUES.length; pos=0; paintTransport(); });
+document.getElementById("tPrev").addEventListener("click",function(){ cur=(cur-1+CUES.length)%CUES.length; pos=0; paintTransport(); });
+
+/* ---------------------------------------------------------
+   ROUTING
+   --------------------------------------------------------- */
+var VIEWS=["home","index","project","worlds","design","sound","archive","about"];
+function go(name, arg){
+  VIEWS.forEach(function(v){
+    var el=document.getElementById("v-"+v);
+    if(el) el.classList.toggle("on", v===name);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("nav.primary a"),function(a){
+    if(a.getAttribute("data-go")===name) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+  });
+  if(name==="project") buildProject(arg);
+  window.scrollTo({top:0,behavior:"instant"});
+  if(name==="home") requestAnimationFrame(drawHomeThreads);
+  document.getElementById("sysline").textContent="LAT 18.52 / LON 73.85 · SHEET "+
+    ("00"+(VIEWS.indexOf(name)+1)).slice(-3);
+}
+document.addEventListener("click",function(e){
+  var g=e.target.closest("[data-go]");
+  if(g){ e.preventDefault(); go(g.getAttribute("data-go")); return; }
+  var pr=e.target.closest("[data-proj]");
+  if(pr){ go("project", pr.getAttribute("data-proj")); return; }
+  var f=e.target.closest("[data-cat]");
+  if(f){ activeCat=f.getAttribute("data-cat"); buildFilters(); buildIndex(); return; }
+  var cu=e.target.closest("[data-cue]");
+  if(cu){
+    var id=cu.getAttribute("data-cue");
+    CUES.forEach(function(c,i){ if(c.n===id){ cur=i; } });
+    pos=0; setPlay(true); return;
+  }
+});
+document.addEventListener("keydown",function(e){
+  if(e.key==="Enter" && e.target.classList.contains("mark")) go("home");
+});
+
+/* clock + system readout */
+setInterval(function(){
+  var d=new Date();
+  var t=("0"+d.getHours()).slice(-2)+":"+("0"+d.getMinutes()).slice(-2)+":"+("0"+d.getSeconds()).slice(-2);
+  var c=document.getElementById("clock"); if(c) c.textContent=t+" IST";
+  var s=document.getElementById("sysreadout"); if(s) s.textContent="CAM 01 · REC · "+t;
+},1000);
+
+/* index counter cycles slowly */
+(function(){
+  var n=1;
+  setInterval(function(){
+    var el=document.getElementById("ctr"); if(!el) return;
+    n=(n%6)+1; el.textContent=("00"+n).slice(-3);
+  },2600);
+})();
+
+/* build everything */
+buildHome(); buildFilters(); buildIndex(); buildWorlds(); buildDesign();
+buildSound(); buildArchive(); buildAbout(); paintTransport();
+
+var rt;
+window.addEventListener("resize",function(){ clearTimeout(rt); rt=setTimeout(drawHomeThreads,180); });
+window.addEventListener("load",drawHomeThreads);
+
+})();
+</script>
+</body>
+</html>
